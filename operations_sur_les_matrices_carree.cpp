@@ -108,7 +108,7 @@ void multip()
 	}
 }
 
-//Function to find transpose of matrix
+//fonction pour trouve le transpose de resultats
 void transpose() 
 { 
 	int i, j; 
