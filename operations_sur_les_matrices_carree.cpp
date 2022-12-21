@@ -107,8 +107,7 @@ void multip()
 		}
 	}
 }
-
-//fonction pour trouve le transpose de resultats
+/**fonction pour trouve le transpose de resultats**/
 void transpose() 
 { 
 	int i, j; 
