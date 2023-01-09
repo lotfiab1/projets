@@ -117,15 +117,16 @@ void transpose()
 		  temp[j][i]=result[i][j];
 		}
 	}
+
+}
+/** affiche la matrice transposée **/
+void affiche_transpose(){
+	int i,j;
 	for(i=0;i<ordre;i++){
 		for(j=0;j<ordre;j++){
-			result[i][j]=0;
+		printf("%4d";temp[i][j]);
 		}
-	}
-		for(i=0;i<ordre;i++){
-		for(j=0;j<ordre;j++){
-			result[i][j]=temp[i][j];
-		}
+		printf("\n");
 	}
 }
 
@@ -212,7 +213,7 @@ int main()
 				
 			case 6:
 				transpose();
-				affichage_resultat();
+				affiche_transpose();
 				break;
 
 			case 7:
@@ -228,4 +229,5 @@ int main()
 				printf("\nchoix introuvable! ressayer a nouveau\n");
 				break;
 		}
-	}}
+	}
+}
