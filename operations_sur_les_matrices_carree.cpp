@@ -124,7 +124,7 @@ void affiche_transpose(){
 	int i,j;
 	for(i=0;i<ordre;i++){
 		for(j=0;j<ordre;j++){
-		printf("%4d",temp[i][j]);
+		printf("%7d",temp[i][j]);
 		}
 		printf("\n");
 	}
