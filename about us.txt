@@ -1,0 +1,10 @@
+About Us
+GI Gestion is a program whose goal is to store student information like names and marks inside a text file.
+
+Why We Created GI Gestion
+Our mission behind this simple program is to use all of our programming knowledge in order to gain experience and add to our knowledge, ultimately helping us in our future careers.
+
+Contact Us
+Email: lotfi.abaaya@gmail.com
+Phone: 06-XX-XX-XX-XX
+Developed By:lotfi ait baaya

@@ -1,0 +1,3 @@
+Student_Id: D123456,Last_Name: baaya,First_Name: Mostapha,Number_Of_Grades: 4,Grades: 12.00,13.00,14.00,15.00,-0.00,0.00,0.00
+Student_Id: D123456789,Last_Name: settaf,First_Name: boubakr,Number_Of_Grades: 4,Grades: 14.00,15.00,16.00,17.00,-0.00,0.00,0.00
+Student_Id: D1234567,Last_Name: moad,First_Name: zaid,Number_Of_Grades: 3,Grades: 12.00,14.00,15.00,0.00,-0.00,0.00,0.00
