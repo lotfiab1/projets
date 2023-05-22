@@ -1,14 +1,12 @@
+Did you write this code 
 #include<stdio.h> 
 #include<stdlib.h> 
-
-int mat1[10][10]; //matrice 1
-int mat2[10][10]; //matrice 2
-int result[10][10]; //resultas des operation sur les matrice
-int temp[10][10];
-int ordre; //ordre de matrice
-
-//fonction de remplissage de matrice 1 et matrice 2 :
-void mat_info()
+int Ma1[100][100]; 
+int Ma2[100][100]; 
+int result[100][100]; 
+int temp[100][100];
+int ordre; 
+void mat_info_Ma1_Ma2()
 {
 	int i, j;
 	printf("Entrer la dimension du matrice carree: "); 
@@ -18,7 +16,7 @@ void mat_info()
 	{
 		for(j = 0; j < ordre; j++) 
 		{
-			scanf("%d", &mat1[i][j]);
+			scanf("%d", &Ma1[i][j]);
 		}
 	}
 	printf("Entrer les elements de matrice 2:\n"); 
@@ -26,31 +24,118 @@ void mat_info()
 	{
 		for(j = 0; j < ordre; j++) 
 		{
-			scanf("%d",&mat2[i][j]);
+			scanf("%d",&Ma2[i][j]);
 		}
 	}
 
 }
-//fonction affiche les matrices :
-void affichage_matrices(){
+void affichage_Ma1_Ma2(){
 	int i,j;
 	printf("les elements de matrices 1 :\n");
 	for(i=0;i<ordre;i++){
 		for(j=0;j<ordre;j++){
-			printf("%7d",mat1[i][j]);
+			printf("%7d",Ma1[i][j]);
 		}
 		printf("\n");
 	}
 	printf("les elements de matrice 2 :\n");
 	for(j=0;j<ordre;j++){
 		for(i=0;i<ordre;i++){
-			printf("%7d",mat2[i][j]);
+			printf("%7d",Ma2[i][j]);
 		}
 		printf("\n");
 	}
 }
-//Fonction qui affiche les resultats des autres fonction:
-void affichage_resultat() 
+
+
+void soustract_Ma1_Ma2() 
+{ 
+	int i, j; 
+	for(i = 0; i < ordre; i++) 
+	{
+		for(j = 0; j < ordre; j++) 
+		{
+			result[i][j] = Ma1[i][j] - Ma2[i][j]; 
+		}
+	}
+}
+
+void add_Ma1_Ma2() 
+{ 
+	int i, j; 
+	for(i = 0; i < ordre; i++) 
+	{
+		for(j = 0; j < ordre; j++) 
+		{
+			result[i][j] = Ma1[i][j] + Ma2[i][j]; 
+		}
+	}
+}
+
+void multip_Ma1_Ma2() 
+{ 
+	int i, j, k; 
+	for(i = 0; i < ordre; i++) 
+	{
+		for(j = 0; j < ordre; j++) 
+		{
+			result[i][j] = 0; 
+			for(k = 0; k < ordre; k++) 
+			{
+				result[i][j] += Ma1[i][k] * Ma2[k][j]; 
+			}
+		}
+	}
+}
+void transpose_Ma_result() 
+{ 
+	int i, j; 
+	for(i = 0; i < ordre; i++) 
+	{
+		for(j = 0; j < ordre; j++) {
+		  temp[j][i]=result[i][j];
+		}
+	}
+    for(i=0;i<order;i++){
+       for(j=0;j<order;j++){
+        result[i][j]=temp[i][j];
+        }
+    }
+}
+int maximun_Ma_result() 
+{ 
+	int i, j; 
+	int Max = result[0][0]; 
+	for(i = 0; i < ordre; i++) 
+	{
+		for(j = 0; j < ordre; j++) 
+		{
+			if(result[i][j] > Max) 
+			{
+				Max = result[i][j]; 
+			}
+		}
+	}
+	return Max;
+}
+
+int minimun_Ma_result() 
+{ 
+	int i, j; 
+	int Min = result[0][0]; 
+	for(i = 0; i < ordre; i++) 
+	{
+		for(j = 0; j < ordre; j++) 
+		{
+			if(result[i][j] < Min) 
+			{
+				Min = result[i][j]; 
+			}
+		}
+	}
+	return Min;
+}
+void affichage_Ma_result() 
 { 
 	int i,j;
 	printf("\nEntered Matrix:\n"); 
@@ -64,109 +149,6 @@ void affichage_resultat()
 	}
 	printf("\n");
 }
-
-//Fonction pour l'addition de matrice 1 et matrice 2
-void add() 
-{ 
-	int i, j; 
-	for(i = 0; i < ordre; i++) 
-	{
-		for(j = 0; j < ordre; j++) 
-		{
-			result[i][j] = mat1[i][j] + mat2[i][j]; 
-		}
-	}
-}
-
-//Fonction de soustraction  de matrice 1 et matrice 2
-void soustract() 
-{ 
-	int i, j; 
-	for(i = 0; i < ordre; i++) 
-	{
-		for(j = 0; j < ordre; j++) 
-		{
-			result[i][j] = mat1[i][j] - mat2[i][j]; 
-		}
-	}
-}
-
-//Fonction de multiplicatin entre matrice 1 et matrice 2
-void multip() 
-{ 
-	int i, j, k; 
-	for(i = 0; i < ordre; i++) 
-	{
-		for(j = 0; j < ordre; j++) 
-		{
-			result[i][j] = 0; 
-			for(k = 0; k < ordre; k++) 
-			{
-				result[i][j] += mat1[i][k] * mat2[k][j]; 
-			}
-		}
-	}
-}
-/**fonction pour trouve le transpose de resultats**/
-void transpose() 
-{ 
-	int i, j; 
-	for(i = 0; i < ordre; i++) 
-	{
-		for(j = 0; j < ordre; j++) {
-		  temp[j][i]=result[i][j];
-		}
-	}
-
-}
-/** affiche la matrice transposée **/
-void affiche_transpose(){
-	int i,j;
-	for(i=0;i<ordre;i++){
-		for(j=0;j<ordre;j++){
-		printf("%7d",temp[i][j]);
-		}
-		printf("\n");
-	}
-}
-
-//Fonction determine le maximun de matrice resultat
-int maximun() 
-{ 
-	int i, j; 
-	int max = result[0][0]; 
-	for(i = 0; i < ordre; i++) 
-	{
-		for(j = 0; j < ordre; j++) 
-		{
-			if(result[i][j] > max) 
-			{
-				max = result[i][j]; 
-			}
-		}
-	}
-	return max;
-}
-
-//Fonction determine le minimun de matrice resultat
-int minimun() 
-{ 
-	int i, j; 
-	int min = result[0][0]; 
-	for(i = 0; i < ordre; i++) 
-	{
-		for(j = 0; j < ordre; j++) 
-		{
-			if(result[i][j] < min) 
-			{
-				min = result[i][j]; 
-			}
-		}
-	}
-	return min;
-}
-
-//Fontion affiche la menu des des fonction disonable pour tester
 void affichage_menu() 
 {
 	printf("\nMENU:\n");
@@ -185,7 +167,6 @@ void affichage_menu()
 int main() 
 {
 	int choix;
-	mat_info();
 	while(1) 
 	{
 		affichage_menu();
@@ -193,34 +174,34 @@ int main()
 		switch(choix) 
 		{
 			case 1:
-			    mat_info();
+			    mat_info_Ma1_Ma2();
 			    break;
 			case 2:
-				affichage_matrices();
+				affichage_Ma1_Ma2();
 				break;
 			case 3:
-				soustract();
-				affichage_resultat();
+				soustract_Ma1_Ma2();
+				affichage_Ma_result();
 				break;
 			case 4:
-				multip();
-				affichage_resultat();
+				multip_Ma1_Ma2();
+				affichage_Ma_result();
 				break;
 			case 5:
-				add();
-				affichage_resultat();
+				add_Ma1_Ma2();
+				affichage_Ma_result();
 				break;
 				
 			case 6:
-				transpose();
-				affiche_transpose();
+				transpose_Ma_result();
+				affichage_Ma_result();
 				break;
 
 			case 7:
-				printf("Minimum: %d\n", minimun());
+				printf("Minimum: %d\n",minimun_Ma_result());
 				break;
 			case 8:
-				printf("Maximum: %d\n", maximun());
+				printf("Maximum: %d\n",maximun_Ma_result() );
 				break;
 			case 9: 
 			     exit(0);
@@ -231,3 +212,5 @@ int main()
 		}
 	}
 }
+
+/* class project writted by me :) LoAb*/
