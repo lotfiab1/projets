@@ -1,4 +1,3 @@
-Did you write this code 
 #include<stdio.h> 
 #include<stdlib.h> 
 int Ma1[100][100]; 
